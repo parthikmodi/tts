@@ -18,7 +18,6 @@ env:
 #  - git commit -m "commit from travis-ci"
 #  - docker tag tts $DOCKER_USERNAME/tts
 #  - docker push $DOCKER_USERNAME/tts
-#final test
 
 deploy:
   provider: script
