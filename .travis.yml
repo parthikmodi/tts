@@ -21,8 +21,7 @@ before_deploy:
   - git commit -m "commit from travis-ci"
   - git push https://parthikmodi:${GIT_PASSWORD}@github.com/parthikmodi/text-track-service.git --all
   - docker login -u "parthikmodi" -p "$DOCKER_PASSWORD"
-  - id = docker images --format="{{.Repository}} {{.ID}}" | grep "parthikmodi/tts " | cut -d' ' -f2)
-  - docker commit ${id} tts
+  - docker commit ${docker images --format="{{.Repository}} {{.ID}}" | grep "parthikmodi/tts " | cut -d' ' -f2)} tts
   - docker tag tts ${IMAGE_NAME}
   - docker push ${IMAGE_NAME}
 
