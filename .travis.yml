@@ -15,16 +15,14 @@ script:
   - docker-compose up --build -d
   - docker ps
   - docker images
-  - docker-compose down
 
 before_deploy:
   - git add .
   - git commit -m "commit from travis-ci"
   #- git push https://parthikmodi:${GIT_PASSWORD}@github.com/parthikmodi/text-track-service.git --all
-  - docker login -u "parthikmodi" -p "$DOCKER_PASSWORD"
   - id = docker images --format="{{.Repository}} {{.ID}}" | grep "tts_website" | cut -d' ' -f2
-  - docker commit ${id} tts
-  - docker tag tts ${IMAGE_NAME}
+  - docker commit ${id} ${IMAGE_NAME}
+  - docker tag ${IMAGE_NAME} ${IMAGE_NAME}
   - docker push ${IMAGE_NAME}
 
 deploy:
