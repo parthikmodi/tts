@@ -10,14 +10,14 @@ env:
   global:
     - IMAGE_NAME=parthikmodi/tts
 
-script:
-  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-  - docker build -t tts .
-  - docker images
-  - git add .
-  - git commit -m "commit from travis-ci"
-  - docker tag tts $DOCKER_USERNAME/tts
-  - docker push $DOCKER_USERNAME/tts
+#script:
+#  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+#  - docker build -t tts .
+#  - docker images
+#  - git add .
+#  - git commit -m "commit from travis-ci"
+#  - docker tag tts $DOCKER_USERNAME/tts
+#  - docker push $DOCKER_USERNAME/tts
     
 deploy:
   provider: script
