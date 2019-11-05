@@ -20,7 +20,7 @@ script:
 before_deploy:
   - git add .
   - git commit -m "commit from travis-ci"
-  - git push https://parthikmodi:${GIT_PASSWORD}@github.com/parthikmodi/text-track-service.git --all
+  #- git push https://parthikmodi:${GIT_PASSWORD}@github.com/parthikmodi/text-track-service.git --all
   - docker login -u "parthikmodi" -p "$DOCKER_PASSWORD"
   - id = docker images --format="{{.Repository}} {{.ID}}" | grep "tts_website" | cut -d' ' -f2)
   - docker commit ${id} tts
