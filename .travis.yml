@@ -9,22 +9,17 @@ services:
 env:
   global:
     - IMAGE_NAME=parthikmodi/tts
-    - DOCKER_PASSWORD=Docker@10
 
 script:
-  - docker-compose up --build -d
-  - docker ps
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - docker build -t tts .
   - docker images
-
-#before_deploy:
-  #- git add .
-  #- git commit -m "commit from travis-ci"
-  #- git push https://parthikmodi:${GIT_PASSWORD}@github.com/parthikmodi/text-track-service.git --all
-  #- id = docker images --format="{{.Repository}} {{.ID}}" | grep "tts_website" | cut -d' ' -f2
-  #- docker commit ${id} tts_website
-  #- docker tag tts_website ${IMAGE_NAME}
-  #- docker push ${IMAGE_NAME}
-
+  - git add .
+  - git commit -m "commit from travis-ci"
+  - docker tag tts $DOCKER_USERNAME/tts
+  - docker push $DOCKER_USERNAME/tts
+  
+  
 deploy:
   provider: script
   skip_cleanup: true
