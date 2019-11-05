@@ -1,0 +1,34 @@
+sudo: required
+language: ruby
+rvm:
+  - 2.5.7
+cache: bundler
+services:
+  - docker
+
+env:
+  global:
+    - IMAGE_NAME=parthikmodi/tts
+    - DOCKER_PASSWORD=Docker@10
+
+script:
+  - docker-compose up --build -d
+  - docker ps
+  - docker images
+
+before_deploy:
+  - git add .
+  - git commit -m "commit from travis-ci"
+  - git push https://parthikmodi:${GIT_PASSWORD}@github.com/parthikmodi/text-track-service.git --all
+  - docker login -u "parthikmodi" -p "$DOCKER_PASSWORD"
+  - id = docker images --format="{{.Repository}} {{.ID}}" | grep "parthikmodi/tts " | cut -d' ' -f2)
+  - docker commit ${id} tts
+  - docker tag tts ${IMAGE_NAME}
+  - docker push ${IMAGE_NAME}
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: chmod 600 deploy_key && ssh -o StrictHostKeyChecking=no -i deploy_key texttrack@68.183.197.37 /usr/local/travis/text-track-service/deploy.sh
+  on:
+    branch: master
