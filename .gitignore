@@ -25,5 +25,4 @@ service/*
 bigbluebutton.yml
 test.rb
 test2.rb
-deploy_key
-deploy_key.pub
+
