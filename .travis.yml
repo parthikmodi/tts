@@ -16,14 +16,14 @@ script:
   - docker ps
   - docker images
 
-before_deploy:
-  - git add .
-  - git commit -m "commit from travis-ci"
+#before_deploy:
+  #- git add .
+  #- git commit -m "commit from travis-ci"
   #- git push https://parthikmodi:${GIT_PASSWORD}@github.com/parthikmodi/text-track-service.git --all
-  - id = docker images --format="{{.Repository}} {{.ID}}" | grep "tts_website" | cut -d' ' -f2
-  - docker commit ${id} ${IMAGE_NAME}
-  - docker tag ${IMAGE_NAME} ${IMAGE_NAME}
-  - docker push ${IMAGE_NAME}
+  #- id = docker images --format="{{.Repository}} {{.ID}}" | grep "tts_website" | cut -d' ' -f2
+  #- docker commit ${id} tts_website
+  #- docker tag tts_website ${IMAGE_NAME}
+  #- docker push ${IMAGE_NAME}
 
 deploy:
   provider: script
