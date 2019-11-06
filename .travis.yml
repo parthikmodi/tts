@@ -1,24 +1,15 @@
 sudo: required
 language: ruby
 rvm:
-  - 2.5.7
+- 2.5.7
 cache: bundler
 services:
-  - docker
-
+- docker
 env:
   global:
-    - IMAGE_NAME=parthikmodi/tts
-
-#script:
-#  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-#  - docker build -t tts .
-#  - docker images
-#  - git add .
-#  - git commit -m "commit from travis-ci"
-#  - docker tag tts $DOCKER_USERNAME/tts
-#  - docker push $DOCKER_USERNAME/tts
-
+  - IMAGE_NAME=parthikmodi/tts
+  - secure: Lx5TdoOpOMDgoWCBo4KspaHsegY5de4nFJarE4vDziyhLGRW1pbcCdBJPIDxl1vMpm7ksrAYtXWFhqInKjm9lpydsTvYV5NYgrkFKCgqllQMI+2bRogXa+o2Ji31lYOW1moGLDRCVpal61tqfNs2YX6vT385MTLHRB5xMoaT+7+itiN029V4m1T0YWYEMWE5k7nSMDebpEOx5jzi6bqt5lABPeqyDWRM7suz4+1ndc4SbwrzHmMZyM5yjR+wibrXSPmc0wT84ec0S38kcL7Bn2EGIyxPPZzK4HFqh0U96RXU6XsdSodGcvR1ye/rAlPcCfpWIpLaZmmF/6E5XLOmu3ZisPH8hbXs+M2qfYWbrDWsOr0pFaB3bNbWQICK578gLJszt537YCSPo7OTaaYkS4ff6RTlwyLGyb6t782qV9ZhmOnbP/khyqxKkQBtdvEt5PwLfauUVPkE/4nRpPyFeu/sofPC+SpUcoBOAYigHWNPdayNiGf+hYU5VGsmkwGp6jGYwUEUq1UyTuLeaJ4iZDJUCgCffpU21xH8M+sqJ2OVvE9p9QDlNn1uPxljk1//OHwqRpchZLAGnjr205uBJahW3NbLaaAN6hkkEysEelCIj2RBFZrzC97WVE4nPuBmoamLnSbNJFlkRoH/48lu9qlkZO7Up163Y6Api9RB49U=
+  - secure: qyKb+gD+DdW2Q1/AWuWIzuzuVbPjqA53hKoQd32CJMu6PB3g6kRwjVRz++uEfQZ8EGoIfU9RJt3rT0g5CJDaox76TE29AiEeCwhi/seX/yV5B818FwqFdjoE5n3xCwfqgx0oMa0UXtnU4ysAbrc5OHvVbg95PHjBmVgbHfGk6Dn1JQJK7IX1rwg4oMg3+N5e9ncJmloUbTk4RiFUK2HQrCcVSGMBn9m/e9K0tmRLx5CUmoFICMymq9+VVUkHGg9dfCXHqONv3Exl/zfihRvSWOMMHgx/KyLF96j+85gB1lugRYimUDIpa2xR8oxyP6r4JXIIX0/UK552ljMMGBDngrkl7edTwJ4Bni0vK6znn4cPU+eLBhy5zYYJMGe2gJjRq2lJ6P7aKJnRa77ldnos08EfhQZ2IXQzW0oeqq14KCiWywszxuGGBpFe1Ona7tPHnbpNSD16WnTe/vGie0PXTB96fWlSX2hRgch09uYs0MtY8FwmtGvt7/nf+JZ8T6VEb52AwstzFFULwKxXtktz2LH0kfqpnvYTas4UIKVOL8uT2JrQE3hDk9nguaJ0x26NGpkDVveTaqXFWEsoMOBE21ru82nbha7Oaj0MpWyzAeT4KL/iZUxDj9K4LfpueSqJgvkFTocZORlamIUN3OL9u4+9vQjdzE6mzpNUgtCaElU=
 deploy:
   provider: script
   skip_cleanup: true
