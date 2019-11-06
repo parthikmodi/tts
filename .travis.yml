@@ -9,10 +9,12 @@ env:
   global:
   - IMAGE_NAME=parthikmodi/tts
 before_install:
-- openssl aes-256-cbc -K $encrypted_0339db2a6d01_key -iv $encrypted_0339db2a6d01_iv -in deploy_key.enc -out deploy_key -d
+- openssl aes-256-cbc -K $encrypted_0339db2a6d01_key -iv $encrypted_0339db2a6d01_iv
+  -in deploy_key.enc -out deploy_key -d
 deploy:
   provider: script
   skip_cleanup: true
-  script: chmod 600 ./deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key texttrack@68.183.197.37 sudo /usr/local/travis/parthik/tts/deploy.sh
+  script: chmod 600 ./deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key
+    texttrack@68.183.197.37 sudo /usr/local/travis/parthik/tts/deploy.sh
   on:
     branch: master
