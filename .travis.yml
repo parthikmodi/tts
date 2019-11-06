@@ -1,14 +1,15 @@
 sudo: required
 language: ruby
 rvm:
-  - 2.5.7
+- 2.5.7
 cache: bundler
 services:
-  - docker
-
+- docker
 env:
   global:
-    - IMAGE_NAME=parthikmodi/tts
+  - IMAGE_NAME=parthikmodi/tts
+  - secure: Lx5TdoOpOMDgoWCBo4KspaHsegY5de4nFJarE4vDziyhLGRW1pbcCdBJPIDxl1vMpm7ksrAYtXWFhqInKjm9lpydsTvYV5NYgrkFKCgqllQMI+2bRogXa+o2Ji31lYOW1moGLDRCVpal61tqfNs2YX6vT385MTLHRB5xMoaT+7+itiN029V4m1T0YWYEMWE5k7nSMDebpEOx5jzi6bqt5lABPeqyDWRM7suz4+1ndc4SbwrzHmMZyM5yjR+wibrXSPmc0wT84ec0S38kcL7Bn2EGIyxPPZzK4HFqh0U96RXU6XsdSodGcvR1ye/rAlPcCfpWIpLaZmmF/6E5XLOmu3ZisPH8hbXs+M2qfYWbrDWsOr0pFaB3bNbWQICK578gLJszt537YCSPo7OTaaYkS4ff6RTlwyLGyb6t782qV9ZhmOnbP/khyqxKkQBtdvEt5PwLfauUVPkE/4nRpPyFeu/sofPC+SpUcoBOAYigHWNPdayNiGf+hYU5VGsmkwGp6jGYwUEUq1UyTuLeaJ4iZDJUCgCffpU21xH8M+sqJ2OVvE9p9QDlNn1uPxljk1//OHwqRpchZLAGnjr205uBJahW3NbLaaAN6hkkEysEelCIj2RBFZrzC97WVE4nPuBmoamLnSbNJFlkRoH/48lu9qlkZO7Up163Y6Api9RB49U=
+
 
 #script:
 #  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
@@ -22,7 +23,6 @@ env:
 deploy:
   provider: script
   skip_cleanup: true
-  #script: chmod 600 ./deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key texttrack@68.183.197.37 /usr/local/travis/parthik/tts/deploy.sh
-  script: $DEPLOY_KEY | ssh -o StrictHostKeyChecking=no -q -i /dev/stdin texttrack@68.183.197.37 /usr/local/travis/parthik/tts/deploy.sh
+  script: chmod 600 DEPLOY_KEY && ssh -o StrictHostKeyChecking=no -i DEPLOY_KEY texttrack@68.183.197.37 /usr/local/travis/parthik/tts/deploy.sh
   on:
     branch: master
