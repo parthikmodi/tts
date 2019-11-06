@@ -13,7 +13,6 @@ before_install:
 deploy:
   provider: script
   skip_cleanup: true
-  script: chmod 600 ./deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key texttrack@68.183.197.37
-    /usr/local/travis/parthik/tts/deploy.sh
+  script: chmod 600 ./deploy_key && ssh -o StrictHostKeyChecking=no -i ./deploy_key texttrack@68.183.197.37 sudo /usr/local/travis/parthik/tts/deploy.sh
   on:
     branch: master
